@@ -81,6 +81,9 @@ Use the 'workflow' subcommand to interact with workflows:
 	cmd.AddCommand(newDevCommand())
 	cmd.AddCommand(newDocCommand())
 	cmd.AddCommand(newCompletionCommand())
+	cmd.AddCommand(newNotificationsCommand())
+	cmd.AddCommand(newSettingsCommand())
+	cmd.AddCommand(newSubscriptionsCommand())
 
 	return cmd
 }

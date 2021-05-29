@@ -199,10 +199,12 @@ func (c *Client) Request(setters ...RequestOptionSetter) errors.Error {
 		return parseError(resp)
 	}
 
-	jerr := json.NewDecoder(resp.Body).Decode(opts.responseBody)
+	if resp.Body != nil && opts.responseBody != nil {
+		jerr := json.NewDecoder(resp.Body).Decode(opts.responseBody)
 
-	if jerr != nil {
-		return errors.NewClientInternalError().WithCause(jerr)
+		if jerr != nil {
+			return errors.NewClientInternalError().WithCause(jerr)
+		}
 	}
 
 	return nil
